@@ -2,10 +2,10 @@ import { ThemeSelector } from '@librechat/client';
 import { TStartupConfig } from 'librechat-data-provider';
 import { ErrorMessage } from '~/components/Auth/ErrorMessage';
 import { TranslationKeys, useLocalize } from '~/hooks';
-import SocialLoginRender from './SocialLoginRender';
-import { BlinkAnimation } from './BlinkAnimation';
 import { Banner } from '../Banners';
+import { BlinkAnimation } from './BlinkAnimation';
 import Footer from './Footer';
+import SocialLoginRender from './SocialLoginRender';
 
 function AuthLayout({
   children,
@@ -60,10 +60,15 @@ function AuthLayout({
     <div className="relative flex min-h-screen flex-col bg-white dark:bg-gray-900">
       <Banner />
       <BlinkAnimation active={isFetching}>
-        <div className="mt-6 h-10 w-full bg-cover">
+        <div className="mx-auto mt-6 h-28 w-full bg-cover">
           <img
-            src="assets/logo.svg"
-            className="h-full w-full object-contain"
+            src="assets/logo-baroes-light.svg"
+            className="h-full w-full object-contain dark:hidden"
+            alt={localize('com_ui_logo', { 0: startupConfig?.appTitle ?? 'LibreChat' })}
+          />
+          <img
+            src="assets/logo-baroes-dark.svg"
+            className="hidden h-full w-full object-contain dark:block"
             alt={localize('com_ui_logo', { 0: startupConfig?.appTitle ?? 'LibreChat' })}
           />
         </div>
@@ -77,7 +82,7 @@ function AuthLayout({
         <div className="w-authPageWidth overflow-hidden bg-white px-6 py-4 dark:bg-gray-900 sm:max-w-md sm:rounded-lg">
           {!hasStartupConfigError && !isFetching && (
             <h1
-              className="mb-4 text-center text-3xl font-semibold text-black dark:text-white"
+              className="mb-4 text-center text-3xl font-semibold text-[#9B163F] dark:text-white"
               style={{ userSelect: 'none' }}
             >
               {header}
