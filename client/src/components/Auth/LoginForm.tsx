@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { useForm } from 'react-hook-form';
+import { Button, isDark, Spinner, ThemeContext } from '@librechat/client';
 import { Turnstile } from '@marsidev/react-turnstile';
-import { ThemeContext, Spinner, Button, isDark } from '@librechat/client';
 import type { TLoginUser, TStartupConfig } from 'librechat-data-provider';
+import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import type { TAuthContext } from '~/common';
-import { useResendVerificationEmail, useGetStartupConfig } from '~/data-provider';
+import { useGetStartupConfig, useResendVerificationEmail } from '~/data-provider';
 import { useLocalize } from '~/hooks';
 
 type TLoginFormProps = {
@@ -102,12 +102,18 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
                 },
               })}
               aria-invalid={!!errors.email}
-              className="webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-green-500 focus:outline-none"
+              className="webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:outline-none"
+              style={{ borderColor: 'var(--border-light)' }}
+              onFocus={(e) => (e.target.style.borderColor = '#9B163F')}
+              onBlur={(e) => (e.target.style.borderColor = 'var(--border-light)')}
               placeholder=" "
             />
             <label
               htmlFor="email"
-              className="absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-green-600 dark:peer-focus:text-green-500 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
+              className="absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
+              style={{ color: 'var(--text-secondary-alt)' }}
+              onFocus={(e) => (e.target.style.color = '#9B163F')}
+              onBlur={(e) => (e.target.style.color = 'var(--text-secondary-alt)')}
             >
               {useUsernameLogin
                 ? localize('com_auth_username').replace(/ \(.*$/, '')
@@ -132,12 +138,18 @@ const LoginForm: React.FC<TLoginFormProps> = ({ onSubmit, startupConfig, error, 
                 maxLength: { value: 128, message: localize('com_auth_password_max_length') },
               })}
               aria-invalid={!!errors.password}
-              className="webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:border-green-500 focus:outline-none"
+              className="webkit-dark-styles transition-color peer w-full rounded-2xl border border-border-light bg-surface-primary px-3.5 pb-2.5 pt-3 text-text-primary duration-200 focus:outline-none"
+              style={{ borderColor: 'var(--border-light)' }}
+              onFocus={(e) => (e.target.style.borderColor = '#9B163F')}
+              onBlur={(e) => (e.target.style.borderColor = 'var(--border-light)')}
               placeholder=" "
             />
             <label
               htmlFor="password"
-              className="absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-green-600 dark:peer-focus:text-green-500 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
+              className="absolute start-3 top-1.5 z-10 origin-[0] -translate-y-4 scale-75 transform bg-surface-primary px-2 text-sm text-text-secondary-alt duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-1.5 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 rtl:peer-focus:left-auto rtl:peer-focus:translate-x-1/4"
+              style={{ color: 'var(--text-secondary-alt)' }}
+              onFocus={(e) => (e.target.style.color = '#9B163F')}
+              onBlur={(e) => (e.target.style.color = 'var(--text-secondary-alt)')}
             >
               {localize('com_auth_password')}
             </label>
