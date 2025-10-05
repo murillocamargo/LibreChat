@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import { ErrorTypes } from 'librechat-data-provider';
 import { OpenIDIcon, useToastContext } from '@librechat/client';
+import { ErrorTypes } from 'librechat-data-provider';
+import { useEffect, useState } from 'react';
 import { useOutletContext, useSearchParams } from 'react-router-dom';
 import type { TLoginLayoutContext } from '~/common';
 import { ErrorMessage } from '~/components/Auth/ErrorMessage';
 import SocialButton from '~/components/Auth/SocialButton';
+import { useLocalize } from '~/hooks';
 import { useAuthContext } from '~/hooks/AuthContext';
 import { getLoginError } from '~/utils';
-import { useLocalize } from '~/hooks';
 import LoginForm from './LoginForm';
 
 function Login() {
@@ -105,7 +105,8 @@ function Login() {
           {localize('com_auth_no_account')}{' '}
           <a
             href="/register"
-            className="inline-flex p-1 text-sm font-medium text-green-600 transition-colors hover:text-green-700 dark:text-green-400 dark:hover:text-green-300"
+            className="inline-flex p-1 text-sm font-medium transition-colors"
+            style={{ color: '#9B163F' }}
           >
             {localize('com_auth_sign_up')}
           </a>
