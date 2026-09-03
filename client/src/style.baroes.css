@@ -1,0 +1,32 @@
+:root,
+.dark {
+  --surface-submit: #9b163f;
+  --surface-submit-hover: #7c1232;
+}
+
+body:has(.w-authPageWidth) {
+  --accent-primary: 155 22 63;
+  --accent-primary-hover: 124 18 50;
+}
+
+body:has(.w-authPageWidth) div:has(> img[src='assets/logo.svg']) {
+  height: 7rem;
+  margin-inline: auto;
+  background: center / contain no-repeat url('/assets/logo-baroes-light.svg');
+}
+
+.dark body:has(.w-authPageWidth) div:has(> img[src='assets/logo.svg']) {
+  background-image: url('/assets/logo-baroes-dark.svg');
+}
+
+body:has(.w-authPageWidth) img[src='assets/logo.svg'] {
+  visibility: hidden;
+}
+
+.w-authPageWidth h1 {
+  color: #9b163f;
+}
+
+.dark .w-authPageWidth h1 {
+  color: var(--text-primary);
+}
