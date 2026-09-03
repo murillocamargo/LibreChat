@@ -1,7 +1,7 @@
 :root,
 .dark {
-  --surface-submit: #9b163f;
-  --surface-submit-hover: #7c1232;
+  --surface-submit: 155 22 63;
+  --surface-submit-hover: 124 18 50;
 }
 
 body:has(.w-authPageWidth) {
@@ -28,5 +28,5 @@ body:has(.w-authPageWidth) img[src='assets/logo.svg'] {
 }
 
 .dark .w-authPageWidth h1 {
-  color: var(--text-primary);
+  color: #fff;
 }
